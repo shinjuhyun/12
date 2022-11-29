@@ -3,18 +3,18 @@
 #include <math.h>
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
-typedef struct tagPoint
+struct point
 {
 	int x;
 	int y;
 	
-}point;
+};
 
-double GetDistance(point p1, point p2 );
-
-int main( )
+int main(int argc, const char *argv[])
 {
-	point p1, p2;
+	struct point p1, p2;
+	int xdiff, ydiff;
+	double dist;
 	
 	printf("intput p1 coordinate(x y): ");
 	scanf("%d %d", &p1.x, &p1.y);
@@ -22,15 +22,13 @@ int main( )
 	printf("intput p2 coordinate(x y): ");
 	scanf("%d %d", &p2.x, &p2.y);
 	
-
-	double dDistance = GetDistance( p1, p2 );
+	xdiff = p2.x-p1.x;
+	ydiff = p2.y-p1.y;
 	
-	printf("distance between p1, p2: %f", dDistance);
+	dist = sqrt(xdiff*xdiff + ydiff*ydiff);
+
+	printf("distance between p1, p2: %f", dist);
 
 	return 0;
 }
 
-double GetDistance( const point p1, const point p2 )
-{
-	return sqrt( (p1.x-p2.x)*(p1.x-p2.x) + (p1.y-p2.y)*(p1.y-p2.y) );
-}
