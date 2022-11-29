@@ -1,25 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
-struct student{
-	int ID;
-	char name[6];
-	double grade;
-};
-int main(int argc, char *argv[]) {
-	struct student s1 = {2215750, "juhyun", 4.3};
+typedef struct tagPoint
+{
+	int x;
+	int y;
 	
-	printf("ID: ");
-	scanf("%d",&s1.ID);
-	printf("name: ");
-	scanf("%s",s1.name);
-	printf("grade: ");
-	scanf("%lf", &s1.grade);
+}point;
+
+double GetDistance(point p1, point p2 );
+
+int main( )
+{
+	point p1, p2;
 	
-	printf("ID: %d\n",s1.ID);
-	printf("name: %s\n",s1.name);
-	printf("grade: %f\n",s1.grade);
+	printf("intput p1 coordinate(x y): ");
+	scanf("%d %d", &p1.x, &p1.y);
 	
+	printf("intput p2 coordinate(x y): ");
+	scanf("%d %d", &p2.x, &p2.y);
+	
+
+	double dDistance = GetDistance( p1, p2 );
+	
+	printf("distance between p1, p2: %f", dDistance);
+
 	return 0;
+}
+
+double GetDistance( const point p1, const point p2 )
+{
+	return sqrt( (p1.x-p2.x)*(p1.x-p2.x) + (p1.y-p2.y)*(p1.y-p2.y) );
 }
